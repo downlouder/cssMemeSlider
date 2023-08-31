@@ -1,0 +1,140 @@
+body {
+  background-color: #25282A;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #ffffff;
+}
+main {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  padding: 0 1em;
+  max-width: 60vw;
+}
+h1 {
+  text-align: center;
+  margin: 0;
+}
+img {
+  width: 100%;
+  border-radius: 1em;
+}
+.content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1em;
+}
+
+/* CONTROLS PANEL */
+.controls-panel {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  order: 3;
+  max-width: 50%;
+}
+input {
+  display: none;
+}
+label {
+  display: block;
+  background-clip: content-box;
+  background-color: #549DFC;
+  width: 1.5rem;
+  height: 1.5rem;
+  padding: 0.75rem;
+  border-radius: 50%;
+  outline: 0.2rem solid #549DFC;
+  outline-offset: -0.8rem;
+  transition: all 0.2s linear;
+  cursor: pointer;
+}
+label:hover {
+  outline-color: #B5C4E1;
+}
+label:active {
+  background-color: #B5C4E1;
+}
+input:checked + label {
+  background-color: transparent;
+}
+
+/* TEXT PANEL */
+.texts-panel {
+  order: 2;
+  max-width: 50%;
+  overflow: hidden;
+  display: flex;
+}
+.texts-panel > div {
+  display: flex;
+  transition: all 300ms ease;
+}
+.texts-panel span {
+  min-width: 100%;
+  font-size: 1.6em;
+  letter-spacing: 0.1em;
+  text-shadow: 2 2 0.5em black;
+  align-self: center;
+}
+
+/* SLIDER */
+.slider {
+  overflow: hidden;
+}
+.slider-carousel {
+  display: flex;
+  transition: all 300ms ease;
+}
+
+/* SLIDER MECHANICS */
+.controls-panel:has(#slide1:checked) ~ .slider .slider-carousel {
+  transform: translateX(0);
+}
+.controls-panel:has(#slide2:checked) ~ .slider .slider-carousel {
+  transform: translateX(-100%);
+}
+.controls-panel:has(#slide3:checked) ~ .slider .slider-carousel {
+  transform: translateX(-200%);
+}
+.controls-panel:has(#slide4:checked) ~ .slider .slider-carousel {
+  transform: translateX(-300%);
+}
+
+/* TEXT MECHANICS */
+.controls-panel:has(#slide1:checked) ~ .texts-panel > div {
+  transform: translateX(0);
+}
+.controls-panel:has(#slide2:checked) ~ .texts-panel > div {
+  transform: translateX(-100%);
+}
+.controls-panel:has(#slide3:checked) ~ .texts-panel > div {
+  transform: translateX(-200%);
+}
+.controls-panel:has(#slide4:checked) ~ .texts-panel > div {
+  transform: translateX(-300%);
+}
+
+/* RESPONSIVE DESIGN */
+@media screen and (max-width: 768px) {
+  main {
+    max-width: 80vw;
+  }
+  .texts-panel {
+    order: 3;
+    max-width: 100%;
+  }
+  .controls-panel {
+    order: 2;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+}
+@media screen and (min-width: 1300px) {
+  main {
+    max-width: 50vw;
+  }
+}
